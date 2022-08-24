@@ -11,10 +11,11 @@ RUN \
     LATEST_RELEASE_LINK=$(curl -s https://api.github.com/repos/tpill90/battlenet-lancache-prefill/releases/latest | grep 'browser_' | cut -d\" -f4 | grep 'linux-x64') && \
     LATEST_VERSION=$(echo ${LATEST_RELEASE_LINK} | sed 's/.*-\(.*\)-.*-.*/\1/') && \
     DOWNLOAD_VERSION=$([ "${PREFILL_VERSION}" == "latest" ] && echo ${LATEST_VERSION} || echo ${PREFILL_VERSION}) && \
-    DOWNLOAD_URL=$([ "${PREFILL_VERSION}" == "latest" ] && echo ${LATEST_RELEASE_LINK} || echo https://github.com/tpill90/battlenet-lancache-prefill/releases/download/v${DOWNLOAD_VERSION}/linux-x64.zip) && \
-    wget -O SteamPrefill.zip ${DOWNLOAD_URL} && \
+    DOWNLOAD_URL=$([ "${PREFILL_VERSION}" == "latest" ] && echo ${LATEST_RELEASE_LINK} || echo https://github.com/tpill90/battlenet-lancache-prefill/releases/download/v${DOWNLOAD_VERSION}/BattleNetPrefill-${DOWNLOAD_VERSION}-linux-x64.zip) && \
+    wget -O BattleNetPrefill.zip ${DOWNLOAD_URL} && \
     unzip BattleNetPrefill && \
-    chmod +x BattleNetPrefill-linux-x64\\BattleNetPrefill
+    mv BattleNetPrefill-${DOWNLOAD_VERSION}-linux-x64\\BattleNetPrefill BattleNetPrefill && \
+    chmod +x BattleNetPrefill
 
 
 FROM --platform=linux/amd64 ubuntu:22.04
@@ -28,7 +29,7 @@ RUN \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /app
 
-COPY --from=download /tmp/BattleNetPrefill-linux-x64\\BattleNetPrefill /app/BattleNetPrefill
+COPY --from=download /tmp/BattleNetPrefill /app/BattleNetPrefill
 
 WORKDIR /app
 ENTRYPOINT [ "/app/BattleNetPrefill" ]
