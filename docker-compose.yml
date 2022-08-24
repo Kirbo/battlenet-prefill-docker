@@ -1,7 +1,7 @@
 version: '3'
 services:
   battlenet-prefill:
-    build: .
+    image: kirbownz/battlenet-prefill-docker:latest
     volumes:
       - ./cache:/app/cache
     profiles:
