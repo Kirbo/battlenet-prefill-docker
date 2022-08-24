@@ -1,15 +1,25 @@
-FROM alpine:3 AS download
-ARG PREFILL_VERSION=1.3.0
+# docker build . --build-arg PREFILL_VERSION=latest -t kirbownz/battlenet-prefill-docker:latest
+# docker push kirbownz/battlenet-prefill-docker:latest
+# docker run -v ${PWD}/Cache:/app/Cache -v ${PWD}/Config:/app/Config --rm kirbownz/battlenet-prefill-docker:latest version
 
+
+FROM --platform=linux/amd64 alpine:3 AS download
+ARG PREFILL_VERSION=latest
 RUN \
+    apk --no-cache add curl && \
     cd /tmp && \
-    wget -O BattleNetPrefill.zip https://github.com/tpill90/battlenet-lancache-prefill/releases/download/v${PREFILL_VERSION}/linux-x64.zip && \
+    LATEST_RELEASE_LINK=$(curl -s https://api.github.com/repos/tpill90/battlenet-lancache-prefill/releases/latest | grep 'browser_' | cut -d\" -f4 | grep 'linux-x64') && \
+    LATEST_VERSION=$(echo ${LATEST_RELEASE_LINK} | sed 's/.*-\(.*\)-.*-.*/\1/') && \
+    DOWNLOAD_VERSION=$([ "${PREFILL_VERSION}" == "latest" ] && echo ${LATEST_VERSION} || echo ${PREFILL_VERSION}) && \
+    DOWNLOAD_URL=$([ "${PREFILL_VERSION}" == "latest" ] && echo ${LATEST_RELEASE_LINK} || echo https://github.com/tpill90/battlenet-lancache-prefill/releases/download/v${DOWNLOAD_VERSION}/linux-x64.zip) && \
+    wget -O SteamPrefill.zip ${DOWNLOAD_URL} && \
     unzip BattleNetPrefill && \
     chmod +x BattleNetPrefill-linux-x64\\BattleNetPrefill
 
 
-FROM ubuntu:22.04
-LABEL maintainer="jess@mintopia.net"
+FROM --platform=linux/amd64 ubuntu:22.04
+LABEL maintainer="kirbo@kirbo-designs.com"
+
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 RUN \
