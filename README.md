@@ -21,7 +21,7 @@ Prerequisites
 Clone this repository and then use either the `BattleNetPrefill` command or `BattleNetPrefill.cmd` if you're on Windows.
 
 ```bash
-git clone https://github.com/mintopia/battlenet-prefill-docker.git
+git clone https://gitlab.com/kirbownz/battlenet-prefill-docker.git
 cd battlenet-prefill-docker
 ./BattleNetPrefill list-products
 ```
@@ -39,7 +39,7 @@ docker run \
   -v ${PWD}/cache:/app/cache \
   -it \
   --rm \
-  ghcr.io/mintopia/battlenet-prefill-docker:latest \
+  kirbownz/battlenet-prefill-docker:latest \
   list-products
 ```
 
