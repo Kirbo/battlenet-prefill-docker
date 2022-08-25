@@ -2,7 +2,12 @@
 
 [![](https://dcbadge.vercel.app/api/server/BKnBS4u?style=flat-square)](https://discord.com/invite/lancachenet)
 
+- [GitLab repository](https://gitlab.com/kirbo/battlenet-prefill-docker)
+- [GitLab CI/CD](https://gitlab.com/kirbo/battlenet-prefill-docker/-/pipelines)
+
 ## Introduction
+
+This repository is a fork based on Jessica Smiths' (mintopia) repository: [https://github.com/mintopia/battlenet-prefill-docker](https://github.com/mintopia/battlenet-prefill-docker).
 
 Dockerfile, docker-compose and helper scripts for running [tpill90](https://github.com/tpill90)'s [battlenet-lancache-prefill](https://github.com/tpill90/battlenet-lancache-prefill) within a docker container.
 
@@ -48,6 +53,7 @@ For support, please visit the [LanCache.Net Discord Server](https://discord.com/
 
 This would not exist without the following:
 
+- [Jessica Smith](https://github.com/mintopia)
 - [Tim Pilius](https://github.com/tpill90)
 - LanCache.Net Team
 - UK LAN Techs
@@ -56,7 +62,7 @@ This would not exist without the following:
 
 The MIT License (MIT)
 
-Copyright (c) 2022 Jessica Smith
+Copyright (c) 2022 Kimmo Saari
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

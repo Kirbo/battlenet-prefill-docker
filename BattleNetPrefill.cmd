@@ -1,2 +1,2 @@
 @echo off
-docker compose run --rm battlenet-prefill %*
+docker compose -f docker-compose.dev.yml run --rm battlenet-prefill %*
