@@ -43,7 +43,37 @@ docker run \
   list-products
 ```
 
-This will use the latest image from GHCR.
+This will use the latest image from Docker hub.
+
+## Adding as a stack on Portrainer
+
+1. Go to "Stacks" page in the menu
+2. Click "+ Add stack"
+3. Give it a name (e.g. "battlenet-prefill") and under "Build method" select "Repository" and paste `https://gitlab.com/kirbo/battlenet-prefill-docker` into "Repository URL"
+4. Once you've done your own modifications, at the bottom of the page click "Deploy the stack"
+5. Navigate to "Containers" page
+6. Click on "battlenet-lancache-prefill-<name-you-gave-in-step-3>-1"  (e.g. `battlenet-lancache-prefill-battlenet-prefill-1`)
+7. Click "Duplicate/Edit"
+8. Scroll at the bottom of the page, next to "Command" click the "Override" button and next to that button fill in your command, for me I want to prefill Overwatch and Hots, so `prefill --nocache --products pro hero`
+9. Click the "Deploy the container" which is slightly above the Command you just modified
+10. Done
+
+
+### Schedule the prefill
+
+To make the prefill scheduled:
+1. You need to enable and setup Edge Computing (Settings -> Edge Computing -> "Enable Edge Compute features").
+2. You will need to set up the Edge Agent.
+3. Once those are done, go to Edge Jobs and click "Add Edge job"
+4. Give it a name, e.g. "scheduled-battlenet-prefill" 
+5. Select when do you want the prefill to be run, for me I chose "Advanced configuration" and fill in the input `0 1,3,5,7,9,11,13,15,17,19,21,23 * * *` so the Battlenet prefill will be run at every odd hour
+6. Under the "Web editor" add the same name you had in the bullets above on step 6, such as:
+   ```
+   docker start battlenet-lancache-prefill-battlenet-prefill-1
+   ```
+7. Select the Target environment
+8. Click "Create edge job"
+9. Done
 
 ## Support
 
