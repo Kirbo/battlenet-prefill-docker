@@ -52,7 +52,7 @@ This will use the latest image from Docker hub.
 3. Give it a name (e.g. "battlenet-prefill") and under "Build method" select "Repository" and paste `https://gitlab.com/kirbo/battlenet-prefill-docker` into "Repository URL"
 4. Once you've done your own modifications, at the bottom of the page click "Deploy the stack"
 5. Navigate to "Containers" page
-6. Click on "battlenet-lancache-prefill-<name-you-gave-in-step-3>-1"  (e.g. `battlenet-lancache-prefill-battlenet-prefill-1`)
+6. Click on `battlenet-lancache-prefill-<name-you-gave-in-step-3>-1`  (e.g. `battlenet-lancache-prefill-battlenet-prefill-1`)
 7. Click "Duplicate/Edit"
 8. Scroll at the bottom of the page, next to "Command" click the "Override" button and next to that button fill in your command, for me I want to prefill Overwatch and Hots, so `prefill --nocache --products pro hero`
 9. Click the "Deploy the container" which is slightly above the Command you just modified
