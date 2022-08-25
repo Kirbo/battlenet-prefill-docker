@@ -4,6 +4,7 @@
 
 - [GitLab repository](https://gitlab.com/kirbo/battlenet-prefill-docker)
 - [GitLab CI/CD](https://gitlab.com/kirbo/battlenet-prefill-docker/-/pipelines)
+- [Docker hub images](https://hub.docker.com/r/kirbownz/battlenet-prefill-docker/tags)
 
 ## Introduction
 
