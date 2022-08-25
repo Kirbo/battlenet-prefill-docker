@@ -47,7 +47,7 @@ This will use the latest image from GHCR.
 
 ## Support
 
-For support, please visit the [LanCache.Net Discord Server](https://discord.com/invite/lancachenet) in the `#steam-prefill` channel.
+For support, please visit the [LanCache.Net Discord Server](https://discord.com/invite/lancachenet) in the `#battlenet-prefill` channel.
 
 ## Thanks
 
