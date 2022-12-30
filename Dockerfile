@@ -14,7 +14,7 @@ RUN \
     DOWNLOAD_URL=$([ "${PREFILL_VERSION}" == "latest" ] && echo ${LATEST_RELEASE_LINK} || echo https://github.com/tpill90/battlenet-lancache-prefill/releases/download/v${DOWNLOAD_VERSION}/BattleNetPrefill-${DOWNLOAD_VERSION}-linux-x64.zip) && \
     wget -O BattleNetPrefill.zip ${DOWNLOAD_URL} && \
     unzip BattleNetPrefill && \
-    mv BattleNetPrefill-${DOWNLOAD_VERSION}-linux-x64\\BattleNetPrefill BattleNetPrefill && \
+    mv BattleNetPrefill-${DOWNLOAD_VERSION}-linux-x64/BattleNetPrefill BattleNetPrefill && \
     chmod +x BattleNetPrefill
 
 
