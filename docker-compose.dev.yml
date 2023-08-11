@@ -3,7 +3,8 @@ services:
   battlenet-prefill:
     build: .
     volumes:
-      - ./cache:/app/cache
+      - ./Cache:/app/Cache
+      - ./Config:/app/Config
     profiles:
       - battlenet-prefill
     network_mode: host
