@@ -3,5 +3,6 @@ services:
   battlenet-prefill:
     image: kirbownz/battlenet-prefill-docker:latest
     volumes:
-      - ./cache:/app/cache
+      - ./Cache:/app/Cache
+      - ./Config:/app/Config
     network_mode: host
